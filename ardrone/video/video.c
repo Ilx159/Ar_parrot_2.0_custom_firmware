@@ -95,6 +95,7 @@ void *video_thread_main(void* data)
 			break;    
 		}
     }
+	return NULL;
 }
 
 int video_Init(vid_struct *vid)
@@ -222,6 +223,6 @@ void video_GrabImage(vid_struct *vid, img_struct *img) {
 	pthread_mutex_lock(&video_grab_mutex);
 	vid->img = img;
 	vid->trigger=1;
-	while(vid->trigger) pthread_yield();
+	while(vid->trigger) sched_yield();
 	pthread_mutex_unlock(&video_grab_mutex);
 }

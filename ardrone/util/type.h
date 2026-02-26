@@ -1,26 +1,53 @@
-/*
-    type.h - type definitions
+#ifndef TYPES_H
+#define TYPES_H
 
-    Copyright (C) 2011 Hugo Perquin - http://blog.perquin.com
+#include <stdint.h>
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+typedef uint16_t u16;
+typedef uint32_t u32;
+typedef uint8_t u08;
+typedef uint64_t u64;
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+typedef int8_t i08;
+typedef int16_t i16;
+typedef int32_t i32;
+typedef int64_t i64;
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-    MA 02110-1301 USA.
-*/
-#ifndef _TYPE_H
-#define _TYPE_H
-typedef unsigned int           u32;
-typedef unsigned short int     u16;
-typedef unsigned char          u08;
+typedef float f32;
+typedef double f64;
+
+typedef union {
+u32 data;
+struct {
+  u08 b;
+  u08 g;
+  u08 r;
+  u08 a;
+} c;
+}argb32_t;
+
+typedef struct {
+  int x, y;
+} vec2i;
+
+typedef struct {
+  float x, y;
+}vec2f;
+
+typedef struct {
+  float x, y, z;
+} vec3f;
+
+typedef struct {
+  int x, y, z;
+} vec3i;
+
+typedef struct {
+  int w, x, y, z;
+} vec4i;
+
+typedef struct {
+  float w, x, y, z;
+} vec4f;
 #endif
+

@@ -114,6 +114,7 @@ int ctl_Init(char *client_addr)
 		printf("ctl_Init: Return code from pthread_create(mot_thread) is %d\n", rc);
 		return 202;
 	}
+	return 0;
 }
 
 void *ctl_thread_main(void* data)
@@ -175,7 +176,7 @@ void *ctl_thread_main(void* data)
     navLog_Send();
   
 		//yield to other threads
-		pthread_yield();
+		sched_yield();
 	}
 }
 
